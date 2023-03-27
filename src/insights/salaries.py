@@ -3,9 +3,13 @@ from src.insights.jobs import read
 
 
 def get_max_salary(path: str) -> int:
-    return int(max(list(set(jobs['max_salary']
-                        for jobs in read(path)
-                            if jobs['max_salary'])), key=int))
+    return max(
+        set(
+            int(jobs["max_salary"])
+            for jobs in read(path)
+            if jobs["max_salary"] and jobs["max_salary"] != 'invalid'
+        )
+    )
 
 
 def get_min_salary(path: str) -> int:
@@ -53,8 +57,7 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
 
 
 def filter_by_salary_range(
-    jobs: List[dict],
-    salary: Union[str, int]
+    jobs: List[dict], salary: Union[str, int]
 ) -> List[Dict]:
     """Filters a list of jobs by salary range
 
