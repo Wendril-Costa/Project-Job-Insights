@@ -2,7 +2,7 @@ from typing import Union, List, Dict
 from src.insights.jobs import read
 
 
-def max_or_min_salary(path: str, string: str) -> int:
+def max_or_min_salary(path: str, string: str) -> List[int]:
     salary = []
     for jobs in read(path):
         try:
