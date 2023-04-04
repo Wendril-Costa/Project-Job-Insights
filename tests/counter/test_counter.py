@@ -5,7 +5,7 @@ from unittest.mock import mock_open, patch
 
 @pytest.fixture
 def fixture():
-    """JavaScript JavaScript
+    return """JavaScript JavaScript
     Python Python Python C++ C C# C++ python javascript"""
 
 
